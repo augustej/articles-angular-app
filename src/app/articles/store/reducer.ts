@@ -10,5 +10,17 @@ export const initialState: ArticlesStateInterface = {
 
 export const reducers = createReducer(
   initialState,
-  on(ArticlesActions.getArticles, (state) => ({ ...state, isLoading: true }))
+  on(ArticlesActions.getArticles, (state) => ({ ...state, isLoading: true })),
+
+  on(ArticlesActions.getArticlesSuccess, (state, action) => ({
+    ...state,
+    isLoading: false,
+    articles: action.articles,
+  })),
+
+  on(ArticlesActions.getArticlesFailure, (state, action) => ({
+    ...state,
+    isLoading: false,
+    error: action.error,
+  }))
 );

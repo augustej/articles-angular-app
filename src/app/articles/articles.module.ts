@@ -5,6 +5,8 @@ import { reducers } from './store/reducer';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticlesRoutingModule } from './articles-routing.module';
+import { EffectsModule } from '@ngrx/effects';
+import { ArticlesEffects } from './store/effects';
 
 @NgModule({
   declarations: [ArticlesComponent, ArticleComponent],
@@ -12,6 +14,7 @@ import { ArticlesRoutingModule } from './articles-routing.module';
     CommonModule,
     ArticlesRoutingModule,
     StoreModule.forFeature('articles', reducers),
+    EffectsModule.forFeature([ArticlesEffects]),
   ],
   providers: [],
 })
