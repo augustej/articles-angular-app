@@ -34,7 +34,7 @@ export class ArticlesComponent implements OnInit {
     this.store.dispatch(
       ArticlesActions.addArticle({
         article: {
-          id: '123',
+          id: 123,
           imageUrl: 'bla',
           title: 'strin',
           description: 'string',

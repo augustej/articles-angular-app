@@ -2,6 +2,6 @@
 <div *ngIf="isLoading$ | async">is loading...</div>
 <div *ngIf="error$ | async as error">{{ error }}</div>
 <div *ngFor="let article of articles$ | async | slice : -10">
-  <p>{{ article.id }}</p>
+  <app-article [article]="article"></app-article>
 </div>
 <button (click)="added()">ADD</button>

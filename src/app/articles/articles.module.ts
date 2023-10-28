@@ -7,14 +7,17 @@ import { ArticleComponent } from './components/article/article.component';
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { EffectsModule } from '@ngrx/effects';
 import { ArticlesEffects } from './store/effects';
+import { TruncatePipe } from '../pipes/truncate.pipe';
+import { ArticlePageComponent } from './components/article-page/article-page.component';
 
 @NgModule({
-  declarations: [ArticlesComponent, ArticleComponent],
+  declarations: [ArticlesComponent, ArticleComponent, ArticlePageComponent],
   imports: [
     CommonModule,
     ArticlesRoutingModule,
     StoreModule.forFeature('articles', reducers),
     EffectsModule.forFeature([ArticlesEffects]),
+    TruncatePipe,
   ],
   providers: [],
 })

@@ -1,1 +1,5 @@
-<p>article works!</p>
+<a class="article" [routerLink]="'/articles/' + article.id">
+  <img src="./assets/default.jpeg" class="article__img" />
+  <h2 class="article__title">{{ article.title }}</h2>
+  <p class="article__description">{{ article.description | truncate : 100 }}</p>
+</a>

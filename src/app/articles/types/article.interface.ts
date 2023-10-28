@@ -1,6 +1,6 @@
 export interface ArticleInterface {
-  id: string;
-  imageUrl: string;
+  id: number;
+  imageUrl?: string;
   title: string;
   description: string;
 }
