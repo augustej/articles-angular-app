@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs';
 import { ArticleInterface } from '../types/article.interface';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -14,6 +14,11 @@ export class ArticlesService {
     return this.http
       .get<ArticleInterface[]>('https://jsonplaceholder.typicode.com/posts')
       .pipe(catchError(this.handleError));
+  }
+
+  addArticle(article: ArticleInterface) {
+    console.log('called');
+    return of(article);
   }
 
   private handleError(error: HttpErrorResponse) {

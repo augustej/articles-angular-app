@@ -22,5 +22,23 @@ export const reducers = createReducer(
     ...state,
     isLoading: false,
     error: action.error,
+  })),
+
+  on(ArticlesActions.addArticle, (state) => ({
+    ...state,
+    isLoading: true,
+    error: null,
+  })),
+
+  on(ArticlesActions.addArticleSuccess, (state, { article }) => ({
+    ...state,
+    isLoading: false,
+    articles: [...state.articles, article],
+  })),
+
+  on(ArticlesActions.addArticleFailure, (state, { error }) => ({
+    ...state,
+    isLoading: false,
+    error,
   }))
 );

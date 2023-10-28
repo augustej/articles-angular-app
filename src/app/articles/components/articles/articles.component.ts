@@ -29,4 +29,17 @@ export class ArticlesComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(ArticlesActions.getArticles());
   }
+
+  added() {
+    this.store.dispatch(
+      ArticlesActions.addArticle({
+        article: {
+          id: '123',
+          imageUrl: 'bla',
+          title: 'strin',
+          description: 'string',
+        },
+      })
+    );
+  }
 }

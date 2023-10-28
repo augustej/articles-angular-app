@@ -4,3 +4,4 @@
 <div *ngFor="let article of articles$ | async | slice : -10">
   <p>{{ article.id }}</p>
 </div>
+<button (click)="added()">ADD</button>
