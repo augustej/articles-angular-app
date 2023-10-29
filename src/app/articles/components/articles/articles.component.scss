@@ -1,0 +1,12 @@
+.page {
+  &__title {
+    font-weight: 600;
+  }
+
+  &__articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+  }
+}

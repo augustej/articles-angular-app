@@ -9,9 +9,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { ArticlesEffects } from './store/effects';
 import { TruncatePipe } from '../pipes/truncate.pipe';
 import { ArticlePageComponent } from './components/article-page/article-page.component';
+import { CreateArticleComponent } from './components/create-article/create-article.component';
 
 @NgModule({
-  declarations: [ArticlesComponent, ArticleComponent, ArticlePageComponent],
+  declarations: [ArticlesComponent, ArticleComponent, ArticlePageComponent, CreateArticleComponent],
   imports: [
     CommonModule,
     ArticlesRoutingModule,
