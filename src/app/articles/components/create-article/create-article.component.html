@@ -1,1 +1,43 @@
-<button (click)="added()">Aadd new article</button>
+<div class="page">
+  <form [formGroup]="newArticleForm" class="page__form">
+    <h1>Create new article</h1>
+
+    <!-- Title -->
+    <div class="page__form-item">
+      <label for="title" class="page__form-label">Title: </label>
+      <input
+        formControlName="title"
+        id="title"
+        type="text"
+        class="page__form-input {{ titleError ? '-error' : '' }}"
+      />
+      <p class="page__error-msg" *ngIf="titleError">{{ titleError }}</p>
+    </div>
+
+    <!-- Description -->
+    <div class="page__form-item">
+      <label for="description" class="page__form-label">Description: </label>
+      <textarea
+        formControlName="description"
+        id="description"
+        class="page__form-input {{ descriptionError ? '-error' : '' }}"
+      ></textarea>
+      <p class="page__error-msg" *ngIf="descriptionError">
+        {{ descriptionError }}
+      </p>
+    </div>
+
+    <!-- Image url -->
+    <div class="page__form-item">
+      <label for="image" class="page__form-label">Image url:</label>
+      <input
+        formControlName="imageUrl"
+        id="image"
+        type="text"
+        class="page__form-input"
+      />
+    </div>
+
+    <button (click)="submitForm()" class="page__submit-btn">Add</button>
+  </form>
+</div>

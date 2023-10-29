@@ -10,15 +10,22 @@ import { ArticlesEffects } from './store/effects';
 import { TruncatePipe } from '../pipes/truncate.pipe';
 import { ArticlePageComponent } from './components/article-page/article-page.component';
 import { CreateArticleComponent } from './components/create-article/create-article.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ArticlesComponent, ArticleComponent, ArticlePageComponent, CreateArticleComponent],
+  declarations: [
+    ArticlesComponent,
+    ArticleComponent,
+    ArticlePageComponent,
+    CreateArticleComponent,
+  ],
   imports: [
     CommonModule,
     ArticlesRoutingModule,
     StoreModule.forFeature('articles', reducers),
     EffectsModule.forFeature([ArticlesEffects]),
     TruncatePipe,
+    ReactiveFormsModule,
   ],
   providers: [],
 })
