@@ -85,12 +85,12 @@ export class CreateArticleComponent {
       });
   }
 
-  // get id of last article which is added to store
+  // get id of last article in store
   getLastId(lastId$: Observable<number | null>) {
     lastId$
       .pipe(
         map((id) => {
-          return id;
+          return id ? id : null;
         })
       )
       .subscribe((id) => (this.lastId = id));
@@ -105,8 +105,11 @@ export class CreateArticleComponent {
   }
 
   createArticleObject(): ArticleInterface {
-    let newId: number;
-    this.lastId ? (newId = this.lastId + 1) : (newId = 0);
+    let newId: number = 0;
+
+    if (this.lastId) {
+      newId = this.lastId + 1;
+    }
 
     const article = { ...this.newArticleForm.value, id: newId };
 

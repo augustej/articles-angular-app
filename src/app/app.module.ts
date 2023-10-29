@@ -21,7 +21,7 @@ import { GoBackComponent } from './components/go-back/go-back.component';
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states,
+      maxAge: 25,
       autoPause: true,
     }),
     GoBackComponent,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { map, Observable, withLatestFrom } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import * as ArticlesActions from '../../store/actions';
 import {
@@ -39,8 +39,9 @@ export class ArticlesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.isArticlesEmpty)
+    if (this.isArticlesEmpty) {
       this.store.dispatch(ArticlesActions.getArticles());
+    }
   }
 
   navigateToCreateArticle() {
