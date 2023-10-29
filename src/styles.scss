@@ -7,3 +7,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.page {
+  margin: 1.5em;
+}
+
+@media (min-width: 400px) {
+  .page {
+    margin: 2.5em;
+  }
+}

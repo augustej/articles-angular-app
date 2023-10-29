@@ -17,3 +17,8 @@ export const errorSelector = createSelector(
   selectFeature,
   (state) => state.error
 );
+
+export const specificArticleSelector = (articleId: number) =>
+  createSelector(articlesSelector, (articles) =>
+    articles.find((article) => article.id === articleId)
+  );
