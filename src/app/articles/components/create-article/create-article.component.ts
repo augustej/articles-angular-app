@@ -5,7 +5,11 @@ import { select, Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import * as ArticlesActions from '../../store/actions';
-import { articlesSelector, lastIdSelector } from '../../store/selectors';
+import {
+  articlesSelector,
+  errorSelector,
+  lastIdSelector,
+} from '../../store/selectors';
 import { ArticleInterface } from '../../types/article.interface';
 
 @Component({
@@ -17,6 +21,7 @@ export class CreateArticleComponent {
   articles$: Observable<ArticleInterface[]>;
   isArticlesEmpty: boolean | undefined;
   lastId: number | null | undefined;
+  error$: Observable<string | null>;
 
   titleError = '';
   descriptionError = '';
@@ -42,6 +47,7 @@ export class CreateArticleComponent {
   constructor(private router: Router, private store: Store<AppStateInterface>) {
     this.articles$ = this.store.pipe(select(articlesSelector));
     const lastId$ = this.store.pipe(select(lastIdSelector));
+    this.error$ = this.store.pipe(select(errorSelector));
 
     this.checkIfArticlesEmpty();
     if (lastId$) this.getLastId(lastId$);

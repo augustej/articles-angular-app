@@ -3,6 +3,7 @@
     [src]="article.imageUrl ? article.imageUrl : './assets/default.jpeg'"
     class="article__img"
   />
+
   <h2 class="article__title">{{ article.title }}</h2>
   <p class="article__description">{{ article.description | truncate : 100 }}</p>
 </a>

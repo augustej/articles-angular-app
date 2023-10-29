@@ -25,7 +25,6 @@ export class ArticlesService {
   }
 
   addArticle(article: ArticleInterface) {
-    console.log('called');
     return of(article);
   }
 

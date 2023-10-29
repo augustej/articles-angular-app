@@ -1,0 +1,17 @@
+.link {
+  margin: 2em 0;
+  color: rgb(43, 43, 43);
+  font-weight: 300;
+  font-size: 1.3em;
+
+  &__arrow {
+    width: 13px;
+    margin-right: 0.5em;
+  }
+
+  &:hover {
+    cursor: pointer;
+    filter: invert(54%) sepia(11%) saturate(12%) hue-rotate(5deg)
+      brightness(91%) contrast(79%);
+  }
+}

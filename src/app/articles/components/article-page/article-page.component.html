@@ -1,8 +1,5 @@
 <div class="page" *ngIf="article">
-  <a class="page__go-back" routerLink="/">
-    <img src="./assets/arrow-left.svg" alt="arrow" class="page__arrow" />Return
-    to articles
-  </a>
+  <app-go-back></app-go-back>
   <h1 class="page__title">{{ article.title }}</h1>
   <p class="page__description">{{ article.description }}</p>
 </div>

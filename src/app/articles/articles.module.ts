@@ -11,6 +11,7 @@ import { TruncatePipe } from '../pipes/truncate.pipe';
 import { ArticlePageComponent } from './components/article-page/article-page.component';
 import { CreateArticleComponent } from './components/create-article/create-article.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GoBackComponent } from '../components/go-back/go-back.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     EffectsModule.forFeature([ArticlesEffects]),
     TruncatePipe,
     ReactiveFormsModule,
+    GoBackComponent,
   ],
   providers: [],
 })

@@ -8,7 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticlesModule } from './articles/articles.module';
 import { EffectsModule } from '@ngrx/effects';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { GoBackComponent } from './components/go-back/go-back.component';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -23,6 +24,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
       maxAge: 25, // Retains last 25 states,
       autoPause: true,
     }),
+    GoBackComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

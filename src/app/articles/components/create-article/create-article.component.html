@@ -1,5 +1,13 @@
 <div class="page">
-  <form [formGroup]="newArticleForm" class="page__form">
+  <div *ngIf="error$ | async as error" class="page__error">{{ error }}</div>
+
+  <app-go-back></app-go-back>
+
+  <form
+    [formGroup]="newArticleForm"
+    (ngSubmit)="submitForm()"
+    class="page__form"
+  >
     <h1>Create new article</h1>
 
     <!-- Title -->
@@ -38,6 +46,6 @@
       />
     </div>
 
-    <button (click)="submitForm()" class="page__submit-btn">Add</button>
+    <button class="page__submit-btn" [disabled]="error$ | async">Add</button>
   </form>
 </div>
