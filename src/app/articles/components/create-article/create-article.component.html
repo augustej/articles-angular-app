@@ -1,8 +1,11 @@
 <div class="page">
+  <!-- General Error -->
   <div *ngIf="error$ | async as error" class="page__error">{{ error }}</div>
 
+  <!-- Return link -->
   <app-go-back></app-go-back>
 
+  <!-- Form -->
   <form
     [formGroup]="newArticleForm"
     (ngSubmit)="submitForm()"
@@ -12,7 +15,7 @@
 
     <!-- Title -->
     <div class="page__form-item">
-      <label for="title" class="page__form-label">Title: </label>
+      <label for="title" class="page__form-label">*Title: </label>
       <input
         formControlName="title"
         id="title"
@@ -24,7 +27,7 @@
 
     <!-- Description -->
     <div class="page__form-item">
-      <label for="description" class="page__form-label">Description: </label>
+      <label for="description" class="page__form-label">*Description: </label>
       <textarea
         formControlName="description"
         id="description"
@@ -46,6 +49,7 @@
       />
     </div>
 
+    <!-- Add btn -->
     <button class="page__submit-btn" [disabled]="error$ | async">Add</button>
   </form>
 </div>

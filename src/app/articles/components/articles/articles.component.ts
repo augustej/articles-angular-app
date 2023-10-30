@@ -27,15 +27,7 @@ export class ArticlesComponent implements OnInit {
     this.articles$ = this.store.pipe(select(articlesSelector));
     this.error$ = this.store.pipe(select(errorSelector));
 
-    this.articles$
-      .pipe(
-        map((articles) => {
-          return articles.length === 0;
-        })
-      )
-      .subscribe((isEmpty) => {
-        this.isArticlesEmpty = isEmpty;
-      });
+    this.checkIfArticlesEmpty();
   }
 
   ngOnInit(): void {
@@ -46,5 +38,17 @@ export class ArticlesComponent implements OnInit {
 
   navigateToCreateArticle() {
     this.router.navigate(['/articles/create-new-article']);
+  }
+
+  checkIfArticlesEmpty() {
+    this.articles$
+      .pipe(
+        map((articles) => {
+          return articles.length === 0;
+        })
+      )
+      .subscribe((isEmpty) => {
+        this.isArticlesEmpty = isEmpty;
+      });
   }
 }

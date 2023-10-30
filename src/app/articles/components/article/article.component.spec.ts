@@ -23,7 +23,7 @@ describe('ArticleComponent', () => {
 
   const mockArticle: ArticleInterface = {
     id: 1,
-    imageUrl: 'testImageUrl',
+    imageUrl: '',
     title: 'Test Title',
     description: 'Test Description',
   };
@@ -52,7 +52,7 @@ describe('ArticleComponent', () => {
     expect(articleLink).toBeTruthy();
 
     const imgElement = compiled.querySelector('.article__img');
-    expect(imgElement.getAttribute('src')).toContain('testImageUrl');
+    expect(imgElement.getAttribute('src')).toContain('default');
 
     const titleElement = compiled.querySelector('.article__title');
     expect(titleElement.textContent).toContain('Test Title');

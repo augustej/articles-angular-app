@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
@@ -14,7 +14,8 @@ import { ArticleInterface } from '../../types/article.interface';
 export class ArticlePageComponent {
   constructor(
     private route: ActivatedRoute,
-    private store: Store<AppStateInterface>
+    private store: Store<AppStateInterface>,
+    private router: Router
   ) {}
 
   article: ArticleInterface | undefined;
@@ -22,16 +23,21 @@ export class ArticlePageComponent {
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
-      if (!id) return;
+      if (!id) return this.router.navigate(['/articles']);
 
-      this.store
-        .select(specificArticleSelector(+id))
-        .pipe(
-          map((article) => {
-            this.article = article;
-          })
-        )
-        .subscribe();
+      this.getArticleFromStore(+id);
+      return;
     });
+  }
+
+  getArticleFromStore(id: number) {
+    this.store
+      .select(specificArticleSelector(id))
+      .pipe(
+        map((article) => {
+          this.article = article;
+        })
+      )
+      .subscribe();
   }
 }

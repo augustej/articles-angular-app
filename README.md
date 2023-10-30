@@ -1,27 +1,39 @@
-# ArticlesApp
+# Project Articles app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+## Description
 
-## Development server
+The project is aimed at creating articles page using Angular and integrating with the [JSONPlaceholder API](https://jsonplaceholder.typicode.com/). The application employs the usage of the NgRx store to store the retrieved data. The key features of the project include displaying the 10 most recent posts from the store on the Articles page with a default image, title, and truncated description. Additionally, each article is linked to an inner page where the full description is displayed. New articles can be added using a form. The pages are designed to be responsive, utilizing flexbox.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Features
 
-## Code scaffolding
+- Fetches data from the JSONPlaceholder API
+- Utilizes NgRx store for data storage
+- Responsive design with Flexbox
+- Displays the latest 10 articles on the Articles page
+- Provides a form for submitting new articles, with validations for the input fields
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Getting Started
 
-## Build
+### Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the repository.
+2. Run `npm install` to install the project dependencies.
 
-## Running unit tests
+### Development server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Running end-to-end tests
+## Usage
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Upon launching the application, the Articles page will display the 10 most recent articles.
+- Clicking on an article will direct the user to an inner page displaying the full article.
+- To create a new article, click on "Create article" button and navigate to the "Create Article" page. Fill out the form and click "Add".
 
-## Further help
+## Possible imporvements
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- More extensive testing.
+- Better naming of variables.
+
+## Author
+
+[augustej](https://augustej.github.io/)
