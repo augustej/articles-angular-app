@@ -6,8 +6,8 @@ The project is aimed at creating articles page using Angular and integrating wit
 
 ### Screenshots
 
-![](./assets/default.jpeg)
-![](./assets/screenshots/1.png)
+![](./screenshots/2.png)
+![](./screenshots/1.png)
 
 ### Features
 
