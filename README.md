@@ -4,6 +4,11 @@
 
 The project is aimed at creating articles page using Angular and integrating with the [JSONPlaceholder API](https://jsonplaceholder.typicode.com/). The application employs the usage of the NgRx store to store the retrieved data. The key features of the project include displaying the 10 most recent posts from the store on the Articles page with a default image, title, and truncated description. Additionally, each article is linked to an inner page where the full description is displayed. New articles can be added using a form. The pages are designed to be responsive, utilizing flexbox.
 
+### Screenshots
+
+![](./assets/screenshots/2.png)
+![](./assets/screenshots/1.png)
+
 ### Features
 
 - Fetches data from the JSONPlaceholder API

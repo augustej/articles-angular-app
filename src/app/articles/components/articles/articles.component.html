@@ -1,6 +1,6 @@
 <div class="page">
-  <!-- Error -->
-  <div *ngIf="error$ | async as error" class="page__error">{{ error }}</div>
+  <!-- General Error -->
+  <div *ngIf="error$ | async as error" class="general-error">{{ error }}</div>
 
   <div class="page__top-items-container">
     <!-- Title -->
@@ -22,9 +22,11 @@
 
   <!-- Articles container -->
   <div class="page__articles">
-    <app-article
-      *ngFor="let article of articles$ | async | slice : -10"
-      [article]="article"
-    ></app-article>
+    <ng-container *ngIf="articles$ | async as articles">
+      <app-article
+        *ngFor="let article of articles.slice(-10).reverse()"
+        [article]="article"
+      ></app-article>
+    </ng-container>
   </div>
 </div>
