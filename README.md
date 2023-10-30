@@ -1,4 +1,4 @@
-# Project Articles app
+# Articles angular application
 
 ## Description
 
