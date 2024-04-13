@@ -9,6 +9,7 @@ import {
   articlesSelector,
   errorSelector,
   lastIdSelector,
+  isArticlesEmptySelector,
 } from '../../store/selectors';
 import { ArticleInterface } from '../../types/article.interface';
 
@@ -20,7 +21,7 @@ import { ArticleInterface } from '../../types/article.interface';
 })
 export class CreateArticleContainerComponent {
   articles$: Observable<ArticleInterface[]>;
-  isArticlesEmpty: boolean | undefined;
+  isArticlesEmpty$: Observable<boolean>;
   lastId: number | null | undefined;
   error$: Observable<string | null>;
 
@@ -51,14 +52,23 @@ export class CreateArticleContainerComponent {
     this.articles$ = this.store.pipe(select(articlesSelector));
     const lastId$ = this.store.pipe(select(lastIdSelector));
     this.error$ = this.store.pipe(select(errorSelector));
+    this.isArticlesEmpty$ = this.store.pipe(select(isArticlesEmptySelector));
 
-    this.checkIfArticlesEmpty();
     if (lastId$) this.getLastId(lastId$);
   }
 
   ngOnInit() {
-    if (this.isArticlesEmpty)
-      this.store.dispatch(ArticlesActions.getArticles());
+    this.initializeArticlesIfEmpty();
+  }
+
+  initializeArticlesIfEmpty() {
+    const emptyArticleSubscription = this.isArticlesEmpty$.subscribe(
+      (isEmpty) => {
+        if (isEmpty) this.store.dispatch(ArticlesActions.getArticles());
+      }
+    );
+
+    this.subscription.add(emptyArticleSubscription);
   }
 
   submitForm() {
@@ -76,14 +86,6 @@ export class CreateArticleContainerComponent {
     );
 
     this.subscription.add(articlesSubscription);
-  }
-
-  checkIfArticlesEmpty() {
-    const emptyArtcileSubscription = this.articles$
-      .pipe(map((articles) => articles.length === 0))
-      .subscribe((isEmpty) => (this.isArticlesEmpty = isEmpty));
-
-    this.subscription.add(emptyArtcileSubscription);
   }
 
   getLastId(lastId$: Observable<number | null>) {

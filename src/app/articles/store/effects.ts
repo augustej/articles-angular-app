@@ -20,6 +20,20 @@ export class ArticlesEffects {
     )
   );
 
+  getArticle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ArticlesActions.getArticle),
+      mergeMap(({ id }) => {
+        return this._articlesService.getArticle(id).pipe(
+          map((article) => ArticlesActions.getArticleSuccess({ article })),
+          catchError((error) =>
+            of(ArticlesActions.getArticleFailure({ error: error }))
+          )
+        );
+      })
+    )
+  );
+
   addArticle$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ArticlesActions.addArticle),

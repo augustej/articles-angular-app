@@ -24,6 +24,17 @@ export class ArticlesService {
       );
   }
 
+  getArticle(id: number): Observable<ArticleInterface> {
+    return this.http
+      .get<ArticleFromServerInterface>(
+        `https://jsonplaceholder.typicode.com/posts/${id}`
+      )
+      .pipe(
+        map((item) => this.modifyInterface(item)),
+        catchError(this.handleError)
+      );
+  }
+
   addArticle(article: ArticleInterface) {
     return of(article);
   }
@@ -38,7 +49,6 @@ export class ArticlesService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    // Pass the error to the consumer of the service
     return throwError(() => new Error(error.message));
   }
 }

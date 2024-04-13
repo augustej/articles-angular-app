@@ -29,3 +29,8 @@ export const lastIdSelector = createSelector(articlesSelector, (articles) => {
   }
   return null;
 });
+
+export const isArticlesEmptySelector = createSelector(
+  articlesSelector,
+  (articles) => articles.length < 2 // single article can be preloaded if user navigates to article page directly
+);

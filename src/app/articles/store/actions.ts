@@ -13,6 +13,21 @@ export const getArticlesFailure = createAction(
   props<{ error: string }>()
 );
 
+export const getArticle = createAction(
+  '[Article] Get Article',
+  props<{ id: number }>()
+);
+
+export const getArticleSuccess = createAction(
+  '[Articles] Get Article Success',
+  props<{ article: ArticleInterface }>()
+);
+
+export const getArticleFailure = createAction(
+  '[Articles] Get Article Failure',
+  props<{ error: string }>()
+);
+
 export const addArticle = createAction(
   '[Articles] Add Article',
   props<{ article: ArticleInterface }>()
