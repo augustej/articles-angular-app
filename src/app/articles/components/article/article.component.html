@@ -1,8 +1,11 @@
 <a class="article" [routerLink]="['/articles', article.id]">
   <!-- Image -->
   <img
-    [src]="article.imageUrl ? article.imageUrl : './assets/default.jpeg'"
+    [ngSrc]="article.imageUrl ? article.imageUrl : './assets/default.jpeg'"
     class="article__img"
+    width="300"
+    height="190"
+    priority
   />
 
   <!-- Title -->

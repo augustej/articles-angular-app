@@ -12,6 +12,7 @@ import { ArticlePageContainerComponent } from './components/article-page-contain
 import { CreateArticleContainerComponent } from './components/create-article-container/create-article-container.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoBackComponent } from '../components/go-back/go-back.component';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { GoBackComponent } from '../components/go-back/go-back.component';
   ],
   imports: [
     CommonModule,
+    NgOptimizedImage,
     ArticlesRoutingModule,
     StoreModule.forFeature('articles', reducers),
     EffectsModule.forFeature([ArticlesEffects]),
