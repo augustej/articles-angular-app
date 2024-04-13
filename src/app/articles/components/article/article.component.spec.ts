@@ -17,7 +17,7 @@ describe('ArticleComponent', () => {
       limit: number = 100,
       trail: string = '...'
     ): string {
-      return value ? value : '';
+      return value || '';
     }
   }
 

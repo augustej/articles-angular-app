@@ -1,5 +1,4 @@
 <a class="article" [routerLink]="['/articles', article.id]">
-  <!-- Image -->
   <img
     [ngSrc]="article.imageUrl ? article.imageUrl : './assets/default.jpeg'"
     class="article__img"
@@ -8,9 +7,7 @@
     priority
   />
 
-  <!-- Title -->
   <h2 class="article__title">{{ article.title }}</h2>
 
-  <!-- Description -->
   <p class="article__description">{{ article.description | truncate : 100 }}</p>
 </a>

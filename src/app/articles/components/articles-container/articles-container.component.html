@@ -1,12 +1,9 @@
 <div class="page">
-  <!-- General Error -->
   <div *ngIf="error$ | async as error" class="general-error">{{ error }}</div>
 
   <div class="page__top-items-container">
-    <!-- Title -->
     <h1 class="page__title">Articles</h1>
 
-    <!-- Spinner -->
     <img
       *ngIf="isLoading$ | async"
       class="page__spinner"
@@ -14,7 +11,6 @@
       alt="spinner"
     />
 
-    <!-- Create article btn -->
     <button
       (click)="navigateToCreateArticleContainer()"
       class="page__create-btn"
@@ -23,7 +19,6 @@
     </button>
   </div>
 
-  <!-- Articles container -->
   <div class="page__articles">
     <ng-container *ngIf="articles$ | async as articles">
       <app-article
