@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CreateArticleComponent } from './create-article.component';
+import { CreateArticleContainerComponent } from './create-article-container.component';
 import { Store } from '@ngrx/store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import * as ArticlesActions from '../../store/actions';
 
-describe('CreateArticleComponent', () => {
-  let component: CreateArticleComponent;
-  let fixture: ComponentFixture<CreateArticleComponent>;
+describe('CreateArticleContainerComponent', () => {
+  let component: CreateArticleContainerComponent;
+  let fixture: ComponentFixture<CreateArticleContainerComponent>;
   let mockStore: any;
   let mockRouter: any;
 
@@ -32,7 +32,7 @@ describe('CreateArticleComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
-      declarations: [CreateArticleComponent, MockGoBackComponent],
+      declarations: [CreateArticleContainerComponent, MockGoBackComponent],
       providers: [
         { provide: Store, useValue: mockStore },
         { provide: Router, useValue: mockRouter },
@@ -41,7 +41,7 @@ describe('CreateArticleComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateArticleComponent);
+    fixture = TestBed.createComponent(CreateArticleContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

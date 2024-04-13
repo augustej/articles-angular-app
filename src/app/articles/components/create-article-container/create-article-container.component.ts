@@ -13,11 +13,11 @@ import {
 import { ArticleInterface } from '../../types/article.interface';
 
 @Component({
-  selector: 'app-create-article',
-  templateUrl: './create-article.component.html',
-  styleUrls: ['./create-article.component.scss'],
+  selector: 'app-create-article-container',
+  templateUrl: './create-article-container.component.html',
+  styleUrls: ['./create-article-container.component.scss'],
 })
-export class CreateArticleComponent {
+export class CreateArticleContainerComponent {
   articles$: Observable<ArticleInterface[]>;
   isArticlesEmpty: boolean | undefined;
   lastId: number | null | undefined;
@@ -99,12 +99,12 @@ export class CreateArticleComponent {
   addArticleToStore() {
     this.store.dispatch(
       ArticlesActions.addArticle({
-        article: this.createArticleObject(),
+        article: this.CreateArticleContainerObject(),
       })
     );
   }
 
-  createArticleObject(): ArticleInterface {
+  CreateArticleContainerObject(): ArticleInterface {
     let newId: number = 0;
 
     if (this.lastId) {

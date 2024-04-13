@@ -12,11 +12,11 @@ import {
 import { ArticleInterface } from '../../types/article.interface';
 
 @Component({
-  selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.scss'],
+  selector: 'app-articles-container',
+  templateUrl: './articles-container.component.html',
+  styleUrls: ['./articles-container.component.scss'],
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesContainerComponent implements OnInit {
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   articles$: Observable<ArticleInterface[]>;
@@ -36,7 +36,7 @@ export class ArticlesComponent implements OnInit {
     }
   }
 
-  navigateToCreateArticle() {
+  navigateToCreateArticleContainer() {
     this.router.navigate(['/articles/create-new-article']);
   }
 

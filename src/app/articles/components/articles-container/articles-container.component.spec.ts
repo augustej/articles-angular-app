@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ArticlesComponent } from './articles.component';
+import { ArticlesContainerComponent } from './articles-container.component';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import * as ArticlesActions from '../../store/actions';
 import { Router } from '@angular/router';
 
-describe('ArticlesComponent', () => {
-  let component: ArticlesComponent;
-  let fixture: ComponentFixture<ArticlesComponent>;
+describe('ArticlesContainerComponent', () => {
+  let component: ArticlesContainerComponent;
+  let fixture: ComponentFixture<ArticlesContainerComponent>;
   let mockStore: any;
   let mockRouter: any;
 
@@ -25,7 +25,7 @@ describe('ArticlesComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ArticlesComponent],
+      declarations: [ArticlesContainerComponent],
       providers: [
         { provide: Store, useValue: mockStore },
         { provide: Router, useValue: mockRouter },
@@ -34,7 +34,7 @@ describe('ArticlesComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArticlesComponent);
+    fixture = TestBed.createComponent(ArticlesContainerComponent);
     component = fixture.componentInstance;
   });
 
@@ -64,7 +64,7 @@ describe('ArticlesComponent', () => {
   });
 
   it('should navigate to create article page', () => {
-    component.navigateToCreateArticle();
+    component.navigateToCreateArticleContainer();
     expect(mockRouter.navigate).toHaveBeenCalledWith([
       '/articles/create-new-article',
     ]);

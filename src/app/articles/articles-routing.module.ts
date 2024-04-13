@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IdValidationGuard } from '../guards/id-validation.guard';
-import { ArticlePageComponent } from './components/article-page/article-page.component';
-import { ArticlesComponent } from './components/articles/articles.component';
-import { CreateArticleComponent } from './components/create-article/create-article.component';
+import { ArticlePageContainerComponent } from './components/article-page-container/article-page-container.component';
+import { ArticlesContainerComponent } from './components/articles-container/articles-container.component';
+import { CreateArticleContainerComponent } from './components/create-article-container/create-article-container.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ArticlesComponent,
+    component: ArticlesContainerComponent,
     pathMatch: 'full',
   },
   {
     path: 'create-new-article',
-    component: CreateArticleComponent,
+    component: CreateArticleContainerComponent,
   },
   {
     path: ':id',
-    component: ArticlePageComponent,
+    component: ArticlePageContainerComponent,
     canActivate: [IdValidationGuard],
   },
 ];

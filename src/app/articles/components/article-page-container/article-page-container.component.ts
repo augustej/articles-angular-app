@@ -7,11 +7,11 @@ import { specificArticleSelector } from '../../store/selectors';
 import { ArticleInterface } from '../../types/article.interface';
 
 @Component({
-  selector: 'app-article-page',
-  templateUrl: './article-page.component.html',
-  styleUrls: ['./article-page.component.scss'],
+  selector: 'app-article-page-container',
+  templateUrl: './article-page-container.component.html',
+  styleUrls: ['./article-page-container.component.scss'],
 })
-export class ArticlePageComponent {
+export class ArticlePageContainerComponent {
   constructor(
     private route: ActivatedRoute,
     private store: Store<AppStateInterface>,
