@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs';
+import { Subscription, filter, map, take } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import { specificArticleSelector } from '../../store/selectors';
 import { ArticleInterface } from '../../types/article.interface';
@@ -11,33 +11,43 @@ import { ArticleInterface } from '../../types/article.interface';
   templateUrl: './article-page-container.component.html',
   styleUrls: ['./article-page-container.component.scss'],
 })
-export class ArticlePageContainerComponent {
+export class ArticlePageContainerComponent implements OnInit {
+  article: ArticleInterface | undefined;
+  private subscription: Subscription = new Subscription();
+
   constructor(
     private route: ActivatedRoute,
     private store: Store<AppStateInterface>,
     private router: Router
   ) {}
 
-  article: ArticleInterface | undefined;
-
   ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
-      const id = params.get('id');
-      if (!id) return this.router.navigate(['/articles']);
+    const routeSubscription = this.route.paramMap
+      .pipe(
+        map((params) => params.get('id')),
+        map((id) => (id ? +id : null)),
+        take(1)
+      )
+      .subscribe((id) => this.getArticleFromStore(id));
 
-      this.getArticleFromStore(+id);
-      return;
-    });
+    this.subscription.add(routeSubscription);
   }
 
-  getArticleFromStore(id: number) {
-    this.store
+  getArticleFromStore(id: number | null) {
+    if (!id) {
+      this.router.navigate(['/articles']);
+      return;
+    }
+
+    const storeSubscription = this.store
       .select(specificArticleSelector(id))
-      .pipe(
-        map((article) => {
-          this.article = article;
-        })
-      )
+      .pipe(map((article) => (this.article = article)))
       .subscribe();
+
+    this.subscription.add(storeSubscription);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

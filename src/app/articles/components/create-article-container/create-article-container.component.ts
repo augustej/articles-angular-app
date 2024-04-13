@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import * as ArticlesActions from '../../store/actions';
 import {
@@ -44,6 +44,8 @@ export class CreateArticleContainerComponent {
     imageUrl: new FormControl(''),
   });
 
+  private subscription: Subscription = new Subscription();
+
   constructor(private router: Router, private store: Store<AppStateInterface>) {
     this.articles$ = this.store.pipe(select(articlesSelector));
     const lastId$ = this.store.pipe(select(lastIdSelector));
@@ -68,32 +70,27 @@ export class CreateArticleContainerComponent {
 
     this.addArticleToStore();
 
-    this.articles$.subscribe(() => {
-      this.router.navigate(['/articles']);
-    });
+    const articlesSubscription = this.articles$.subscribe(() =>
+      this.router.navigate(['/articles'])
+    );
+
+    this.subscription.add(articlesSubscription);
   }
 
   checkIfArticlesEmpty() {
-    this.articles$
-      .pipe(
-        map((articles) => {
-          return articles.length === 0;
-        })
-      )
-      .subscribe((isEmpty) => {
-        this.isArticlesEmpty = isEmpty;
-      });
+    const emptyArtcileSubscription = this.articles$
+      .pipe(map((articles) => articles.length === 0))
+      .subscribe((isEmpty) => (this.isArticlesEmpty = isEmpty));
+
+    this.subscription.add(emptyArtcileSubscription);
   }
 
-  // get id of last article in store
   getLastId(lastId$: Observable<number | null>) {
-    lastId$
-      .pipe(
-        map((id) => {
-          return id ? id : null;
-        })
-      )
+    const lastIdSubscription = lastId$
+      .pipe(map((id) => id || null))
       .subscribe((id) => (this.lastId = id));
+
+    this.subscription.add(lastIdSubscription);
   }
 
   addArticleToStore() {
@@ -105,12 +102,7 @@ export class CreateArticleContainerComponent {
   }
 
   CreateArticleContainerObject(): ArticleInterface {
-    let newId: number = 0;
-
-    if (this.lastId) {
-      newId = this.lastId + 1;
-    }
-
+    let newId: number = this.lastId ? this.lastId + 1 : 0;
     const article = { ...this.newArticleForm.value, id: newId };
 
     return article as ArticleInterface;
@@ -142,5 +134,9 @@ export class CreateArticleContainerComponent {
     }
 
     return '';
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
