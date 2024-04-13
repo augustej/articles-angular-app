@@ -12,6 +12,7 @@ export const IdValidationGuard: CanActivateFn = (route, state) => {
   const TOTAL_ARTICLES_COUNT = 100;
 
   const id = route.paramMap.get('id');
+  console.log('id', id);
   if (!id) return true;
 
   return store.select(articlesSelector).pipe(
