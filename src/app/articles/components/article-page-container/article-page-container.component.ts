@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription, filter, map, take } from 'rxjs';
+import { Subscription, map, take } from 'rxjs';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import { specificArticleSelector } from '../../store/selectors';
 import { ArticleInterface } from '../../types/article.interface';
@@ -10,6 +10,7 @@ import { ArticleInterface } from '../../types/article.interface';
   selector: 'app-article-page-container',
   templateUrl: './article-page-container.component.html',
   styleUrls: ['./article-page-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlePageContainerComponent implements OnInit {
   article: ArticleInterface | undefined;

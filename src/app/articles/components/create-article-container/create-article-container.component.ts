@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -16,6 +16,7 @@ import { ArticleInterface } from '../../types/article.interface';
   selector: 'app-create-article-container',
   templateUrl: './create-article-container.component.html',
   styleUrls: ['./create-article-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateArticleContainerComponent {
   articles$: Observable<ArticleInterface[]>;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { map, Observable, Subscription } from 'rxjs';
@@ -15,6 +15,7 @@ import { ArticleInterface } from '../../types/article.interface';
   selector: 'app-articles-container',
   templateUrl: './articles-container.component.html',
   styleUrls: ['./articles-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlesContainerComponent implements OnInit {
   isLoading$: Observable<boolean>;
